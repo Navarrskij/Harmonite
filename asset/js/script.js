@@ -1,7 +1,7 @@
 
 
 //alert( "Hello" );
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', (function(){
 
   const COUNT = 5
   var body = document.getElementsByTagName("body")[0];
@@ -14,15 +14,12 @@ document.addEventListener('DOMContentLoaded', function(){
     let cell = document.createElement("td");
     let lastPosX = null
     let lastPosY = null
-    cell.onmousemove = (event) => {
+    cell.onmousemove = debounce((event) => {
       let deltaX = event.pageX - lastPosX
       let deltaY = event.pageY - lastPosY
       lastPosX = event.pageX
       lastPosY = event.pageY
       console.log(lastPosX, lastPosY)
-
-
-
 
       if (Math.abs(deltaX) > Math.abs(deltaY)) {
         if (deltaX > 0) {
@@ -41,9 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
           cell.style.background = 'black'
         }
       }
-    }
-
-
+    }, 50)
 
     var cellText = document.createTextNode("Cell " + j);
     cell.appendChild(cellText);
@@ -56,4 +51,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
   table.setAttribute("border", "1");
 
-});
+}));
