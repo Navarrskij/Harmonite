@@ -3,44 +3,57 @@
 //alert( "Hello" );
 document.addEventListener('DOMContentLoaded', function(){
 
-  const a = 5
+  const COUNT = 5
   var body = document.getElementsByTagName("body")[0];
 
   var table = document.createElement("table");
   var tblBody = document.createElement("tbody");
 
-  for (var i = 0; i < a; i++) {
-    var row = document.createElement("tr");
-    for (var j = 0; j < a; j++) {
-      var cell = document.createElement("td");
-      this.cell  = cell
-      var cellText = document.createTextNode("Cell " + i++);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
+  var row = document.createElement("tr");
+  for (var j = 0; j < COUNT; j++) {
+    let cell = document.createElement("td");
+    let lastPosX = null
+    let lastPosY = null
+    cell.onmousemove = (event) => {
+      let deltaX = event.pageX - lastPosX
+      let deltaY = event.pageY - lastPosY
+      lastPosX = event.pageX
+      lastPosY = event.pageY
+      console.log(lastPosX, lastPosY)
+
+
+
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+          cell.style.background = 'red'
+        }
+        else {
+          cell.style.background = 'green'
+        }
+      }
+
+      if (Math.abs(deltaX) < Math.abs(deltaY)) {
+        if (deltaY > 0) {
+          cell.style.background = 'yellow'
+        }
+        else {
+          cell.style.background = 'black'
+        }
+      }
     }
-    tblBody.appendChild(row);
+
+
+
+    var cellText = document.createTextNode("Cell " + j);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
   }
+  tblBody.appendChild(row);
 
   table.appendChild(tblBody);
   body.appendChild(table);
 
   table.setAttribute("border", "1");
 
-  var div = document.createElement("div");
-  var divText = document.createTextNode("Some Text");
-  div.appendChild(divText);
-  body.appendChild(div);
 });
-
-
-var tbl = document.getElementsByTagName("td");
-
-tbl.onmouseover = function(event) {
-  var target = event.target;
-  target.style.background = 'red';
-};
-
-tbl.onmouseout = function(event) {
-  var target = event.target;
-  target.style.background = '';
-};

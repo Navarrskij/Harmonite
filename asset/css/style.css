@@ -4,3 +4,7 @@ body {
 table {
 	margin-top: 50px;
 }
+
+td {
+	padding: 20px;
+}
