@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (function(){
           cell.style.background = 'black'
         }
       }
-    }, 50)
+    }, 70)
 
     var cellText = document.createTextNode("Cell " + j);
     cell.appendChild(cellText);
