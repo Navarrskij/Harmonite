@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     last = add
   }
-  button1.onclick = add
+  button1.addEventListener('click', add)
 
   var button2 = document.createElement('button')
   button2.className = "btn btn-primary"
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     last = minus
   }
-  button2.onclick = minus
+  button2.addEventListener('click', minus)
 
   var button3 = document.createElement('button')
   button3.className = "btn btn-primary"
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     last = umn
   }
-  button3.onclick = umn
+  button3.addEventListener('click', umn)
 
   var button4 = document.createElement('button')
   button4.className = "btn btn-primary"
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     last = del
   }
-  button4.onclick = del
+  button4.addEventListener('click', del)
 
   body.appendChild(button1)
   body.appendChild(button2)
